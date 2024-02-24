@@ -11,8 +11,13 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'rshop-next-ecommerce.s3.amazonaws.com',
+        hostname: 'rshop-next-ecommerce.s3.amazonaws.com'
       },
-    ],
-  },
-}
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com'
+      }
+    ]
+  }
+};
+

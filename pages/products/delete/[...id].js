@@ -25,7 +25,7 @@ export default function DeleteProductPage() {
   return (
     <Layout>
       <h1 className="text-center">Desea confirmar la eliminación de 
-        &nbsp;"{productInfo?.title}"?
+        &nbsp;&ldqou;{productInfo?.title}&ldqou;?
       </h1>
       <div className="flex gap-2 justify-center">
         <button

@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { unstable_getServerSession as getServerSession } from "next-auth/next"; // Cambiado según la nueva importación
 
 const adminEmails = [
-
+"tomas.millan96@gmail.com"
 ];
 
 export const authOptions = {
