@@ -5,6 +5,7 @@ import Spinner from "./Spinner";
 import { ReactSortable } from "react-sortablejs";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import { Trascan } from "./Trascan";
 
 export default function ProductForm({
   _id,
@@ -105,7 +106,10 @@ export default function ProductForm({
       }
     }
   }
-
+  function removeImage(indexToRemove) {
+    const newImages = images.filter((_, index) => index !== indexToRemove);
+    setImages(newImages);
+  }
 
   function updateImagesOrder(images) {
     setImages(images);
@@ -145,7 +149,9 @@ export default function ProductForm({
       />
       <label>Categoria</label>
       <select value={category} onChange={(ev) => setCategory(ev.target.value)}>
-        <option key={""} value="">Sin Categoria</option>
+        <option key={""} value="">
+          Sin Categoria
+        </option>
         {categories.length > 0 &&
           categories.map(({ _id, name }) => (
             <option key={_id} value={_id}>
@@ -174,27 +180,30 @@ export default function ProductForm({
         ))}
       <label>Fotos</label>
       <div className="mb-2 flex flex-wrap gap-1">
-        <ReactSortable
+        {/* <ReactSortable
           list={images}
-          className="flex flex-wrap gap-1"
           setList={updateImagesOrder}
-        >
-          {!!images?.length &&
-            images.map((link) => (
-              <div
-                key={link}
-                className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200"
-              >
+        > */}
+        {!!images?.length &&
+          images.map((link, index) => (
+            <div
+              key={link}
+              className=" bg-white p-4 shadow-sm rounded-sm border border-gray-200"
+            >
+              <button onClick={() => removeImage(index  )}>
+                <Trascan />
+              </button>
+              
                 <Image
                   src={link}
                   alt=""
                   width={100}
                   height={100}
-                  className="rounded-lg"
+                  style={{ objectFit: "cover", width: "100px", height: "auto" }}
                 />
-              </div>
-            ))}
-        </ReactSortable>
+            </div>
+          ))}
+        {/* </ReactSortable> */}
         {isUploading && (
           <div className="h-24 flex items-center">
             <Spinner />

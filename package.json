@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/core": "^0.28.0",
     "@auth/mongodb-adapter": "^2.4.0",
     "@aws-sdk/client-s3": "^3.515.0",
     "auth": "^1.0.2",
@@ -25,16 +26,21 @@
     "next-auth": "^4.24.6",
     "postcss": "8.4.35",
     "react": "18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-sortablejs": "^6.1.4",
     "react-spinners": "^0.13.8",
     "react-sweetalert2": "^0.6.0",
     "sortablejs": "^1.15.2",
     "sweetalert2": "^11.10.5",
-    "tailwindcss": "3.4.1"
+    "tailwindcss": "3.4.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
   },
   "devDependencies": {
     "@types/node": "20.11.19",
-    "@types/react": "18.2.57"
+    "@types/react": "18.2.57",
+    "@types/sortablejs": "^1.15.8"
   }
 }

@@ -10,6 +10,7 @@ export default function HomeStats() {
     setIsLoading(true);
     axios.get('/api/orders').then(res => {
       setOrders(res.data);
+      console.log('response', res.data);
       setIsLoading(false);
     });
   }, []);

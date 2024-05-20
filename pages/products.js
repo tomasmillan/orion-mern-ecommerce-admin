@@ -3,10 +3,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import ProductUpload from "../components/ExcelUpload";
+import * as XLSX from "xlsx";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     axios.get("/api/products").then((response) => {
@@ -14,11 +17,34 @@ export default function Products() {
       setIsLoading(false);
     });
   }, []);
+
+  const exportDataToExcel = () => {
+    const data = products.map((product) => ({
+      "Nombre del Producto": product.title,
+      "Descripción": product.description || '',
+      "Precio": product.price,
+      
+    }));
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Products");
+    XLSX.writeFile(wb, "products.xlsx");
+  };
+
   return (
     <Layout>
       <Link className="btn-primary" href={"/products/new"}>
         Añadir nuevo producto
       </Link>
+      <div className="flex m-4 align-center justify-start">
+        <ProductUpload />
+        <button
+          onClick={exportDataToExcel}
+          className="rounded-md bg-primary text-white px-2"
+        >
+          Descargar Productos
+        </button>
+      </div>
       <table className="basic mt-2">
         <thead>
           <tr>
